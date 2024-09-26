@@ -60,7 +60,8 @@ export default class AuthenticatingConcept {
     // TODO 2: implement this operation
     //  - use this.users.partialUpdateOne(..)
     //  - maintain the invariant that usernames are unique (we've provided a helper function!)
-    throw new Error("Not implemented!");
+    this.assertUsernameUnique(username);
+    return this.users.partialUpdateOne({ _id }, { username: username });
   }
 
   async delete(_id: ObjectId) {
