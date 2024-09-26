@@ -36,7 +36,9 @@ export default class AuthenticatingConcept {
     // TODO 1: implement this operation
     //  - use this.users.readOne(..)
     //  - don't include the password (we've provided a helper function you can use!)
-    throw new Error("Not implemented!");
+    const user = await this.users.readOne(_id);
+    if (user == null) return { msg: "Must be logged in!" };
+    return this.redactPassword(user);
   }
 
   async getUsers(username?: string) {
